@@ -1,0 +1,66 @@
+<main class="main" id="top">
+  <div class="container-fluid" data-layout="container-fluid">
+    <div class="min-vh-100">
+      <div class="d-flex">
+        <div class="p-2 flex-fill" style="text-align: center;"><img style="width: 30px; height: 20.01px" src="../../assets/img/logos/saudi_flag.png" /><span class="px-2 login-head-txt">92000 6276 | Support@garage.com </span></div>
+        <div class="p-2 flex-fill"></div>
+        <div class="p-2 flex-fill" style="text-align: -webkit-center; color: #141414;">
+          <select class="form-select form-select-sm login-lang login-head-txt" aria-label=".form-select-sm example">
+            <option selected="">English</option>
+            <option value="1">Arabic</option>
+
+          </select>
+        </div>
+      </div>
+      <div class="row flex-center py-8">
+        <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+          <img class="d-flex flex-center" style="margin: auto;" src="assets/img/logos/GarageLogo.png" />
+          <div>
+            <div class="card-body p-4 p-sm-5">
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="mb-4">
+                  <input class="form-control-input" formControlName="email" id="email" type="email" placeholder="Email address" />
+                </div>
+                <div class="form-text text-danger" *ngIf="f.email.errors?.['required'] && (f.email.dirty || f.email.touched)">Email is required.</div>
+                <div class="mb-4">
+                  <div class="password-container">
+                    <input class="form-control-input" formControlName="password" ngModel="Test@123" id="password" [type]="showPass ? 'text' : 'password'" placeholder="Password" /><i class="bi bi-eye-slash fa-eye" id="show-password" (click)="showPassword()"></i>
+                    <div *ngIf="f.password.errors?.['required'] && (f.password.dirty || f.password.touched)" class="alert alert-danger">
+                      password is required.
+                    </div>
+                    <div *ngIf="f.password.errors?.['minlength'] || f.password.errors?.['maxlenght'] && (f.password.dirty || f.password.touched)" class="alert alert-danger">
+                      Password should be atleast 6 and at the max 20 characters long.
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-5">
+                  <button class="btn-login btn-text-loginn" style="height: 58px;font-family: Inter;font-weight: 500;" type="submit" name="submit">Sign in</button>
+                </div>
+                
+              </form>
+              <div class="position-relative mt-5">
+                <div class="fp-link"><a href="" style="text-decoration: none;color: #141414;">Forget Password?</a></div>
+              </div>
+              <div class="position-relative mt-4">
+                <div class="fp-link" style="font-weight: 600;">New to Garage? <a href="" class="link-signup">Sign up</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</main>
+
+<script>
+  const showPassword = document.querySelector("#show-password");
+  const passwordField = document.querySelector("#password");
+
+  showPassword.addEventListener("click", function () {
+    this.classList.toggle("fa-eye-slash");
+    const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+    passwordField.setAttribute("type", type);
+  })
+
+</script>

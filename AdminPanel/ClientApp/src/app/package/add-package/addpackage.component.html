@@ -1,0 +1,256 @@
+<div class="clr-base" style="padding-top: 10px;border-top: outset;">
+  <div class="card-body pl-1">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex">
+        <button class="btn btn-falcon-default btn-sm btn-back" type="button" [routerLink]="['/admin/products/package']"><img src="assets/img/icons/arrow-back.png" width="20" height="20"></button>
+        <h5 class="mb-2 mb-md-0 content-heading pl-3">Add package</h5>
+      </div>
+      <div class="d-flex">
+        <button class="btn-save" role="button">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row g-0 clr-base">
+  <div class="col-lg-8 ps-lg-2">
+    <div class="card mb-3 border-radius-4">
+      <div class="card-header bg-light p-32 cb-header-border">
+        <br>
+        <h6 class="mb-0 font-heading clr-dark">Package Information</h6>
+      </div>
+      <div class="card-body p-32 pt-0">
+        <form>
+          <div class="row gx-2">
+            <div class="col-sm-6 mb-4">
+              <label class="form-label clr-dark fl-mb-12" for="import-status">English Name </label>
+              <input class="form-control-input" id="english-name" type="text" placeholder="English Name" />
+            </div>
+            <div class="col-sm-6 mb-4">
+              <label class="form-label clr-dark fl-mb-12" for="import-status">Arabic Name </label>
+              <input class="form-control-input" id="arabic-name" type="text" placeholder="Arabic Name" />
+            </div>
+          </div>
+          <div class="row gx-2">
+            <div class="col-12 mb-4">
+              <label class="form-label clr-dark fl-mb-12" for="product-name">Category</label>
+              <select class="form-select select-display" id="category" name="category" placeholder="Category">
+                <option value="imported">Imported</option>
+                <option value="processing">Processing </option>
+                <option value="validating">Validating </option>
+                <option value="draft">Draft</option>
+              </select>
+            </div>
+            <div class="col-12 mb-4">
+              <label class="form-label clr-dark fl-mb-12" for="manufacturar-name">Location</label>
+              <select class="form-select select-display" id="item-type" name="item-type">
+                <option value="imported">Imported</option>
+                <option value="processing">Processing </option>
+                <option value="validating">Validating </option>
+                <option value="draft">Draft</option>
+              </select>
+            </div>
+            <div class="row gx-2">
+              <div class="col-12">
+                <label class="form-label clr-dark fl-mb-12" for="product-summary">Description</label>
+                <textarea
+                  placeholder="e.g. I joined Stripe’s Customer Success team to help them scale their checkout product. I focused mainly on onboarding new customers and resolving complaints."
+                  class="form-control form-control-sm" id="exp-description" rows="3"> </textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card mb-3 border-radius-4">
+      <div class="card-header bg-light p-32 cb-header-border">
+        <br>
+        <h6 class="mb-0 clr-dark font-heading">Pricing</h6>
+      </div>
+      <div class="card-body p-32 pt-0">
+        <div class="row gx-2">
+          <div class="col-12 mb-3">
+            <label class="form-label clr-dark fl-mb-12" for="import-status">Price </label>
+            <input class="form-control-input" id="price" type="text" placeholder="0.00 SAR" />
+          </div>
+          <div class="col-12 mb-3">
+            <label class="form-label clr-dark fl-mb-12" for="import-status">Cost</label>
+            <input class="form-control-input" id="price" type="text" placeholder="0.00 SAR" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="card mb-3 border-radius-4">
+  
+        <div class="row gx-2">
+            <div class="col-12 mb-3">
+                <div class="card-header border-bottom border-200 px-0">
+                    <div class="d-lg-flex justify-content-between">
+                      <div class="row flex-between-center">
+                        <div class="col-auto pe-0">
+                        </div>
+                        <div class="col-auto">
+                            <h6 class="mb-0 font-heading clr-dark">Package Details</h6>
+                        </div>
+                      </div>
+                      <div class="border-bottom border-200 my-3"></div>
+                      <div class="d-flex align-items-center justify-content-between justify-content-lg-end px-x1"
+                        style="padding-left: 5px !important;">
+                        <div class="bg-300 mx-3 d-none d-lg-block d-xl-none" style="width:1px; height:29px"></div>
+                        <div class="d-none" id="table-ticket-actions">
+                          <div class="d-flex">
+                            <select class="form-select form-select-sm" aria-label="Bulk actions">
+                              <option selected="">Bulk actions</option>
+                              <option value="Refund">Refund</option>
+                              <option value="Delete">Delete</option>
+                              <option value="Archive">Archive</option>
+                            </select>
+                            <button class="btn btn-falcon-default btn-sm ms-2" type="button">Apply</button>
+                          </div>
+                        </div>
+            
+                        <div class="d-flex align-items-center" id="table-ticket-replace-element">
+                          
+                          
+                          <button class="btn btn-sec btn-falcon-default btn-sm mx-2" [routerLink]="['add-package']"
+                            type="button"><svg class="svg-inline--fa fa-plus fa-w-14" data-fa-transform="shrink-3"
+                              aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img"
+                              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""
+                              style="transform-origin: 0.4375em 0.5em;">
+                              <g transform="translate(224 256)">
+                                <g transform="translate(0, 0)  scale(0.8125, 0.8125)  rotate(0 0 0)">
+                                  <path fill="currentColor"
+                                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                    transform="translate(-224 -256)"></path>
+                                </g>
+                              </g>
+                            </svg><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Add packages</span></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+            <div class="card-body p-0">    
+            <div class="table-responsive scrollbar">
+                <table class="table table-sm mb-0 fs--1 table-view-tickets">
+                  <thead class="text-800 bg-light" style="background-color: #F5F5F5;">
+                    <tr style="background-color: #F5F5F5;">
+                      <th class="sort align-middle ps-2" style="text-align: center;">Name</th>
+                      <th class="sort align-middle ps-2" data-sort="name" style="text-align: center;">Quantity</th>
+                      <th class="sort align-middle" data-sort="category" style="text-align: center;">Discount</th>
+                      <th class="sort align-right" data-sort="price" style="text-align: center;">Total</th>
+                    </tr> 
+                  </thead>
+                  <tbody class="list" id="table-ticket-body">
+                    
+                  </tbody>
+                </table>
+                <div class="text-center d-none" id="tickets-table-fallback">
+                  <p class="fw-bold fs-1 mt-3">No ticket found</p>
+                </div>
+              </div>
+              </div>
+            </div>
+            </div>
+        </div>
+  
+      </div> -->
+  </div>
+  <div class="col-lg-4 ps-lg-3">
+    <div class="sticky-sidebar" style="position: inherit;">
+      <div class="card mb-3 border-radius-4">
+        <div class="card-header bg-light p-32 cb-header-border">
+          <br>
+          <h6 class="mb-0 font-heading clr-dark">Package Status</h6>
+        </div>
+        <div class="card-body p-32 pt-0">
+          <div class="row gx-2">
+            <div class="col-12">
+              <label class="form-label fl-mb-12" for="status">Status</label>
+              <select class="form-select select-display" id="status" name="status">
+                <option value="active">Active</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3 border-radius-4">
+        <div class="card-header bg-light p-32 cb-header-border">
+          <br>
+          <h6 class="mb-0 font-heading clr-dark">Item photos</h6>
+        </div>
+        <form class="dropzone dropzone-single p-0 dz-clickable dz-file-processing dz-file-complete b-0 dz-txt px-4 mt-0"
+          data-dropzone="data-dropzone"
+          data-options="{&quot;maxFiles&quot;:1,&quot;acceptedFiles&quot;:&quot;image/*&quot;}">
+
+          <div class="dz-message fs--1 px-2" data-dz-message="data-dz-message">
+            <div><img class="me-2" src="../../../assets/img/icons/cloud-upload.svg" width="30" height="30" alt=""></div>
+            <span class="d-none d-lg-inline">Drag image here </span><span class="dz-upload-txt">upload</span> or <span
+              class="dz-upload-txt">browse image library</span>.<br> SVG, PNG, JPG or GIF (max. 400x400px)
+          </div>
+        </form>
+
+
+      </div>
+      <div class="card mb-3 border-radius-4">
+        <div class="card-header bg-light p-32 cb-header-border">
+          <br>
+          <h6 class="mb-0 font-heading clr-dark">Package Details</h6>
+        </div>
+        <div class="card-body p-32 pt-0">
+          <div class="row gx-0">
+            <!-- <div class="col-8 mb-3">
+              <label class="form-label" for="base-price">Base Price: <span data-bs-toggle="tooltip"
+                  data-bs-placement="top" title="Product regular price"><span
+                    class="fas fa-question-circle text-primary fs--1 ms-1"></span></span></label>
+              <input class="form-control" id="base-price" type="text" />
+            </div>
+            <div class="col-4">
+              <label class="form-label" for="price-currency">Currency:</label>
+              <select class="form-select" id="price-currency" name="price-currency">
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+                <option value="gbp">GBP</option>
+                <option value="cad">CAD</option>
+              </select>
+            </div> -->
+            <div class="col-12">
+              <label class="form-label clr-dark fl-mb-12" for="discount-percentage">SKU</label>
+              <div class="input-group mb-3">
+                <input class="form-control-input" id="discount-percentage" type="text" />
+                <button class="btn btn-generate py-0">Generate</button>
+                <!-- <div class="input-group-append">
+                  <button class="btn btn-sec" style="height: 50px;" type="button">Generate</button>
+                </div> -->
+              </div>
+              <label class="form-label clr-dark fl-mb-12" for="discount-percentage">Barcode</label>
+              <div class="input-group">
+
+                <input class="form-control-input" id="discount-percentage" type="text" /><button
+                  class="btn btn-scan py-0"><img src="assets/img/icons/scan.png" height="24px" width="24px"></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3 border-radius-4">
+        <div class="card-header bg-light p-32 cb-header-border">
+          <br>
+          <h6 class="mb-0 font-heading clr-dark">Package organization</h6>
+        </div>
+        <div class="card-body p-32 pt-0">
+          <div class="row gx-2">
+            <div class="col-12">
+              <label class="form-label clr-dark fl-mb-12" for="Tags">Tags</label>
+              <select class="form-select select-display" id="tags" name="tags">
+                <option value="active">Active</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,309 @@
+<div class="clr-base" style="padding-top: 10px;border-top: outset;">
+
+  <div class="card-body pl-1">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex">
+        <button class="btn btn-falcon-default btn-sm btn-back" type="button" [routerLink]="['/admin/products']"><img src="assets/img/icons/arrow-back.png" width="20" height="20"></button>
+        <h5 class="mb-2 mb-md-0 content-heading pl-3">Add product</h5>
+      </div>
+      <div class="tab-pane preview-tab-pane active" role="tabpanel" id="dom-cd4497a1-65fb-4371-952c-63579c8c2b0f">
+        <button class="btn btn-primary me-3  btn-cancel" type="button">
+          Cancel
+        </button>
+        <button class="btn btn-primary btn-save" type="button" >Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row g-0 clr-base">
+  <div class="col-lg-8 ps-lg-2 pe-lg-2">
+    <div class="card mb-3 border-radius-4">
+      <div class="card-header bg-light p-32 cb-header-border">
+        <br>
+        <h6 class="mb-0 font-heading clr-dark">Item Information</h6>
+      </div>
+      <div class="card-body p-32 pt-0">
+        <form>
+          <div class="row gx-2">
+            <div class="col-sm-6 mb-4">
+              <label class="form-label clr-dark fl-mb-12" for="import-status">English Name </label>
+              <input class="form-control-input" id="english-name" type="text" placeholder="English Name" />
+            </div>
+            <div class="col-sm-6 mb-4">
+              <label class="form-label clr-dark fl-mb-12" for="import-status">Arabic Name </label>
+              <input class="form-control-input" id="arabic-name" type="text" placeholder="Arabic Name" />
+            </div>
+          </div>
+          <div class="row gx-2">
+            <div class="col-12 mb-4">
+              <label class="form-label clr-dark fl-mb-12" for="product-name">Category</label>
+              <select class="form-select select-display" id="category" name="category" placeholder="Category">
+                <option value="imported">Imported</option>
+                <option value="processing">Processing </option>
+                <option value="validating">Validating </option>
+                <option value="draft">Draft</option>
+              </select>
+            </div>
+            <div class="col-12 mb-4">
+              <label class="form-label clr-dark fl-mb-12" for="manufacturar-name">Item Type</label>
+              <select class="form-select select-display" id="item-type" name="item-type">
+                <option value="imported">Imported</option>
+                <option value="processing">Processing </option>
+                <option value="validating">Validating </option>
+                <option value="draft">Draft</option>
+              </select>
+            </div>
+            <div class="col-12 mb-4">
+              <label class="form-label clr-dark fl-mb-12" for="identification-no">Location</label>
+              <select class="form-select select-display" id="location" name="location">
+                <option value="imported">Imported</option>
+                <option value="processing">Processing </option>
+                <option value="validating">Validating </option>
+                <option value="draft">Draft</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label clr-dark fl-mb-12" for="product-summary">Description</label>
+              <div class="create-product-description-textarea">
+                <input class="form-control-input" id="english-name" type="text" placeholder="Description" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card mb-3 border-radius-4">
+      <div class="card-header bg-light p-32 cb-header-border">
+        <br>
+        <h6 class="mb-0 clr-dark font-heading">Pricing</h6>
+      </div>
+      <div class="card-body p-32 pt-0">
+        <div class="row gx-2">
+          <div class="col-12 mb-18">
+            <div class="form-check">
+              <input class="form-check-input checkbox-size-component" id="flexCheckDefault" type="checkbox" value="" />
+              <label class="form-check-label clr-dark mb-0 pl-3" style="background-color:  #FFFFFF;line-height: 2.10rem !important;" for="flexCheckDefault">Open
+                item</label>
+            </div>
+          </div>
+          <div class="col-12 mb-12">
+            <label class="form-label clr-dark fl-mb-12" for="import-status">Price </label>
+            <input class="form-control-input" id="price" type="text" placeholder="0.00 SAR" />
+          </div>
+          <div class="col-12 mb-18">
+            <div class="form-check">
+              <input class="form-check-input checkbox-size-component" id="flexCheckDefault" type="checkbox" value="" />
+              <label class="form-check-label clr-dark mb-0 pl-3" style="background-color:  #FFFFFF;line-height: 2.10rem !important" for="flexCheckDefault">Charge
+                text on this product</label>
+            </div>
+          </div>
+          <div class="col-12">
+            <label class="form-label clr-dark fl-mb-12" for="import-status">Cost</label>
+            <input class="form-control-input" id="price" type="text" placeholder="0.00 SAR" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3 border-radius-4">
+
+      <div class="row gx-2">
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item b-0 cb-header-border">
+            <h2 class="accordion-header p-32" id="heading1">
+              <button class="accordion-button clr-dark acc-heading" style="background-color:  #FFFFFF;
+              color:#141414;box-shadow: none;padding: 0px;" type="button" data-bs-toggle="collapse1"
+                data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Inventory</button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body p-32 pt-0 pb-0">
+                <div class="card-body p-0">
+                  <div class="row gx-0">
+                    <div class="col-12">
+                      <div class="form-check mb-0 pb-4">
+                        <input class="form-check-input checkbox-size-component" id="flexCheckDefault" type="checkbox" value="" />
+                        <label class="form-check-label clr-dark mb-0 pl-3" style="background-color:  #FFFFFF;line-height: 2.10rem !important"
+                          for="flexCheckDefault">Track item for inventory
+                          item</label>
+                      </div>
+                      <div class="form-check mb-0">
+                        <input class="form-check-input checkbox-size-component" id="flexCheckDefault" type="checkbox" value="" />
+                        <label class="form-check-label clr-dark mb-0 pl-3" style="background-color:  #FFFFFF; line-height: 2.10rem !important"
+                          for="flexCheckDefault">Continue selling when out of stock
+                          text on this product</label>
+                      </div>
+
+                      <hr class="hr hr-blurry my-4" />
+                    </div>
+                    <div class="col-12 mb-3">
+                      <label class="form-label clr-dark fl-mb-12" for="supplier">Supplier </label>
+                      <select class="form-select select-display" id="supplier" name="supplier" placeholder="Category">
+                        <option value="imported">Imported</option>
+                        <option value="processing">Processing </option>
+                        <option value="validating">Validating </option>
+                        <option value="draft">Draft</option>
+                      </select>
+                    </div>
+                    <div class="col-12 mb-4">
+                      <label class="form-label clr-dark fl-mb-12" for="import-status">Minimum stock </label>
+                      <input class="form-control-input" id="price" type="text" placeholder="Minimum stock" />
+                    </div>
+                    <div class="col-12 mb-4">
+                      <label class="form-label clr-dark fl-mb-12" for="import-status">Stock in hand</label>
+                      <input class="form-control-input" id="price" type="text" placeholder="Minimum stock in hand" />
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion" id="accordionExample1">
+                  <div class="accordion-item b-0">
+                    <h3 class="accordion-header" id="heading2">
+                      <button class="accordion-button clr-dark acc-heading p-0" style="background-color:  #FFFFFF;
+                      color:#141414;box-shadow: none;" type="button" data-bs-toggle="collapse3"
+                        data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3">Advance
+                        settings</button>
+                    </h3>
+                    <div id="collapse3" class="accordion-collapse collapse show" aria-labelledby="heading2"
+                      data-bs-parent="#accordionExample1">
+                      <div class="accordion-body p-0">
+                        <div class="card-body px-0 pt-4 pb-0">
+                          <div class="row gx-0">
+                            <div class="col-12 mb-4">
+                              <label class="form-label clr-dark fl-mb-12" for="selling-unit">Selling unit </label>
+                              <select class="form-select select-display" id="selling-unit" name="selling-unit">
+                                <option value="imported">Imported</option>
+                                <option value="processing">Processing </option>
+                                <option value="validating">Validating </option>
+                                <option value="draft">Draft</option>
+                              </select>
+                            </div>
+                            <div class="col-12 mb-4">
+                              <label class="form-label clr-dark fl-mb-12" for="purchasing-unit">Purchasing unit </label>
+                              <select class="form-select select-display" id="purchasing" name="purchasing" disabled>
+                                <option value="imported">kg</option>
+                              </select>
+                            </div>
+                            <div class="col-12 mb-0">
+                              <label class="form-label clr-dark fl-mb-12" for="conversion">Conversion [1 unit =
+                                ]</label>
+                              <input class="form-control-input" id="conversion" type="text"
+                                placeholder="Conversion rate" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-lg-4 ps-lg-3">
+    <div class="sticky-sidebar" style="position: inherit;">
+      <div class="card mb-3 border-radius-4">
+        <div class="card-header bg-light p-32 cb-header-border">
+          <br>
+          <h6 class="mb-0 font-heading clr-dark">Item Status</h6>
+        </div>
+        <div class="card-body p-32 pt-0">
+          <div class="row gx-2">
+            <div class="col-12">
+              <label class="form-label fl-mb-12" for="status">Status</label>
+              <select class="form-select select-display" id="status" name="status">
+                <option value="active">Active</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3 border-radius-4">
+        <div class="card-header bg-light p-32 cb-header-border">
+          <br>
+          <h6 class="mb-0 font-heading clr-dark">Item photos</h6>
+        </div>
+        <form class="dropzone dropzone-single p-0 dz-clickable dz-file-processing dz-file-complete b-0 dz-txt px-4 mt-0"
+          data-dropzone="data-dropzone"
+          data-options="{&quot;maxFiles&quot;:1,&quot;acceptedFiles&quot;:&quot;image/*&quot;}">
+
+          <div class="dz-message fs--1 px-2" data-dz-message="data-dz-message">
+            <div><img class="me-2" src="../../../assets/img/icons/cloud-upload.svg" width="30" height="30" alt=""></div>
+            <span class="d-none d-lg-inline">Drag image here </span><span class="dz-upload-txt">upload</span> or <span
+              class="dz-upload-txt">browse image library</span>.<br> SVG, PNG, JPG or GIF (max. 400x400px)
+          </div>
+        </form>
+
+
+      </div>
+      <div class="card mb-3 border-radius-4">
+        <div class="card-header bg-light p-32 cb-header-border">
+          <br>
+          <h6 class="mb-0 font-heading clr-dark">Item Details</h6>
+        </div>
+        <div class="card-body p-32 pt-0">
+          <div class="row gx-0">
+            <!-- <div class="col-8 mb-3">
+              <label class="form-label" for="base-price">Base Price: <span data-bs-toggle="tooltip"
+                  data-bs-placement="top" title="Product regular price"><span
+                    class="fas fa-question-circle text-primary fs--1 ms-1"></span></span></label>
+              <input class="form-control" id="base-price" type="text" />
+            </div>
+            <div class="col-4">
+              <label class="form-label" for="price-currency">Currency:</label>
+              <select class="form-select" id="price-currency" name="price-currency">
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+                <option value="gbp">GBP</option>
+                <option value="cad">CAD</option>
+              </select>
+            </div> -->
+            <div class="col-12">
+              <label class="form-label clr-dark fl-mb-12" for="discount-percentage">SKU</label>
+              <div class="input-group mb-3">
+                <input class="form-control-input" id="discount-percentage" type="text" />
+                <button class="btn btn-generate py-0">Generate</button>
+                <!-- <div class="input-group-append">
+                  <button class="btn btn-sec" style="height: 50px;" type="button">Generate</button>
+                </div> -->
+              </div>
+              <label class="form-label clr-dark fl-mb-12" for="discount-percentage">Barcode</label>
+              <div class="input-group">
+
+                <input class="form-control-input" id="discount-percentage" type="text" /><button
+                  class="btn btn-scan py-0"><img src="assets/img/icons/scan.png" height="24px" width="24px"></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3 border-radius-4">
+        <div class="card-header bg-light p-32 cb-header-border">
+          <br>
+          <h6 class="mb-0 font-heading clr-dark">Item organization</h6>
+        </div>
+        <div class="card-body p-32 pt-0">
+          <div class="row gx-0">
+            <div class="col-12">
+              <label class="form-label clr-dark fl-mb-12" for="display-order">Display order</label>
+              <div class="input-group mb-3">
+                <input class="form-control-input" id="display-order" type="text" placeholder="Display order" />
+              </div>
+              <label class="form-label clr-dark fl-mb-12" for="Tags">Tags</label>
+              <select class="form-select select-display" id="tags" name="tags">
+                <option value="active">Active</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,227 @@
+<div class="row gx-3" style="background-color: #F5F5F5;border-top: outset;padding-top: 10px;">
+  <div>
+    <div class="card-body">
+      <div class="row flex-between-center">
+        <div class="col-md">
+          <h4 class="mb-2 mb-md-0 content-heading">
+            Products</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xxl-12 col-xl-12">
+
+    <div class="card h-lg-100 card-bd m-16" id="ticketsTable"
+      data-list='{"valueNames":["name","displayOrder","description","status"],"page":5,"pagination":true,"fallback":"tickets-table-fallback"}'>
+      <div class="card-header border-bottom border-200 px-0">
+        <div class="d-lg-flex justify-content-between">
+          <div class="row flex-between-center gy-2 px-x1">
+            <div class="col-auto pe-2">
+              <ul class="nav nav-pills" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link cls-non-active" id="ex1-tab-1" data-mdb-toggle="tab"
+                    [routerLink]="['/admin/products']" role="tab" aria-controls="ex1-tabs-1"
+                    aria-selected="true">Product</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link cls-active" id="ex1-tab-2" data-mdb-toggle="tab"
+                    [routerLink]="['/admin/products/category']" role="tab" aria-controls="ex1-tabs-2"
+                    aria-selected="false">Category</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link cls-non-active" id="ex1-tab-3" data-mdb-toggle="tab"
+                    [routerLink]="['/admin/products/package']" role="tab" aria-controls="ex1-tabs-3"
+                    aria-selected="false">Package</a>
+                </li>
+              </ul>
+            </div>
+            <div *ngIf="showSearch" class="col-auto">
+              <div class="form-group has-search search-w">
+                <span class="form-control-feedback search-pt"><img src="../../../assets/img/icons/Search.png" width="20px" height="20px"></span>
+                <input type="text" [(ngModel)]="searchText" (ngModelChange)="filterItems()" class="form-control"
+                  placeholder="Search">
+              </div>
+            </div>
+          </div>
+          <div class="border-bottom border-200 my-3"></div>
+          <div class="d-flex align-items-center justify-content-between justify-content-lg-end px-x1"
+            style="padding-left: 5px !important;">
+            <div class="bg-300 mx-3 d-none d-lg-block d-xl-none" style="width:1px; height:29px"></div>
+            <div class="d-none" id="table-ticket-actions">
+              <div class="d-flex">
+                <select class="form-select form-select-sm" aria-label="Bulk actions">
+                  <option selected="">Bulk actions</option>
+                  <option value="Refund">Refund</option>
+                  <option value="Delete">Delete</option>
+                  <option value="Archive">Archive</option>
+                </select>
+                <button class="btn btn-falcon-default btn-sm ms-2" type="button">Apply</button>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center" id="table-ticket-replace-element">
+              <!-- <div class="dropdown">
+                <button class="btn btn-sm btn-falcon-default dropdown-toggle dropdown-caret-none" type="button" id="ticket-layout" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block me-1">Table View</span><svg class="svg-inline--fa fa-chevron-down fa-w-14" data-fa-transform="shrink-3 down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="" style="transform-origin: 0.4375em 0.5625em;"><g transform="translate(224 256)"><g transform="translate(0, 32)  scale(0.8125, 0.8125)  rotate(0 0 0)"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" transform="translate(-224 -256)"></path></g></g></svg></button>
+                <div class="dropdown-menu dropdown-toggle-item dropdown-menu-end border py-2" aria-labelledby="ticket-layout"><a class="dropdown-item active" href="../../app/support-desk/table-view.html">Table View</a><a class="dropdown-item" href="../../app/support-desk/card-view.html">Card View</a>
+                </div>
+              </div>  -->
+              <form>
+                <div class="input-group input-search-width">
+                  <button class="btn btn-sm mx-2" (click)="showBar()"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                      height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M17.5 17.5L14.5834 14.5833M16.6667 9.58333C16.6667 13.4954 13.4954 16.6667 9.58333 16.6667C5.67132 16.6667 2.5 13.4954 2.5 9.58333C2.5 5.67132 5.67132 2.5 9.58333 2.5C13.4954 2.5 16.6667 5.67132 16.6667 9.58333Z"
+                        stroke="#333333" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg><!-- <span class="fa fa-search fs--1"></span> Font Awesome fontawesome.com --></button>
+                </div>
+              </form>
+
+              <button class="btn-add btn-add-txt mx-2" [routerLink]="['add-category']" type="button"><svg
+                  class="svg-inline--fa fa-plus fa-w-14" data-fa-transform="shrink-3" aria-hidden="true"
+                  focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512" data-fa-i2svg="" style="transform-origin: 0.4375em 0.5em;">
+                  <g transform="translate(224 256)">
+                    <g transform="translate(0, 0)  scale(0.8125, 0.8125)  rotate(0 0 0)">
+                      <path fill="currentColor"
+                        d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                        transform="translate(-224 -256)"></path>
+                    </g>
+                  </g>
+                </svg><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Add
+                  category</span></button>
+              <button class="btn-notification mx-2" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                  height="20" viewBox="0 0 20 20" fill="none">
+                  <g clip-path="url(#clip0_1184_191246)">
+                    <path
+                      d="M9.99935 5.00033V10.0003L13.3327 11.667M18.3327 10.0003C18.3327 14.6027 14.6017 18.3337 9.99935 18.3337C5.39698 18.3337 1.66602 14.6027 1.66602 10.0003C1.66602 5.39795 5.39698 1.66699 9.99935 1.66699C14.6017 1.66699 18.3327 5.39795 18.3327 10.0003Z"
+                      stroke="#545454" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1184_191246">
+                      <rect width="20" height="20" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg><span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive scrollbar">
+          <table *ngIf="categories && categories.length > 0" class="table table-sm mb-0 fs--1 table-view-tickets">
+            <thead class="text-800 bg-light" style="background-color: #F5F5F5;">
+              <tr style="background-color: #F5F5F5;">
+                <th class="py-12 fs-0 pe-2" style="width: 28px;">
+                  <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input checkbox-size" type="checkbox"  (change)="toggleAll()">
+                  </div>
+                </th>
+                <th class="sort align-middle ps-2 table-header-txt">Image</th>
+                <th class="sort align-middle ps-2 table-header-txt" (click)="sort('name')" style="min-width:15.625rem">
+                  Name<i class="fa fa-sort mx-2"></i></th>
+                <th class="sort align-middle table-header-txt" (click)="sort('displayOrder')">Display order<i
+                    class="fa fa-sort mx-2"></i></th>
+                <th class="sort align-middle table-header-txt">Description</th>
+                <th class="sort align-middle table-header-txt" (click)="sort('statusID')">Status<span><i
+                  class="fa fa-sort mx-2"></i></span></th>
+                <th class="align-middle pl-12"><img
+                    style="width: 20px; height: 20px;border-radius: 50%;background: var(--gray-gray-200, #E2E2E2);"
+                    src="./assets/img/nav-icons/plus.png"></th>
+              </tr>
+            </thead>
+            <tbody class="list" id="table-ticket-body">
+              <tr *ngFor="let category of itemsOnCurrentPage">
+                <td class="align-middle fs-0 py-3">
+                  <div class="form-check mb-0">
+                    <input class="form-check-input checkbox-size" type="checkbox" [(ngModel)]="category.checked"
+                    (change)="onCheckboxChange()">
+                  </div>
+                </td>
+                <td class="align-middle client white-space-nowrap pe-3 pe-xxl-4 ps-2">
+                  <div class="d-flex align-items-center gap-2 position-relative">
+                    <div class="avatar avatar-xl">
+                      <div><span>
+                        <!-- <img src="./assets/img/nav-icons/Mobil.png"> -->
+                        <img *ngIf="category.image !== ''" [src]="category.image" class="image-s"/>
+                      </span></div>
+                    </div>
+                    <!-- <h6 class="mb-0"><a class="stretched-link text-900">{{product.name}}</a></h6> -->
+                  </div>
+                </td>
+                <td class="align-middle subject py-2 pe-4 tr-500">{{category.name}}</td>
+                <td class="align-middle status fs-0 pe-4 tr-400">{{category.displayOrder}}</td>
+                <td class="align-middle status fs-0 pe-4 tr-400"
+                  style="color: var(--base-black, #141414) !important;font-size: 14px !important;">
+                  {{category.description}}
+                </td>
+                <!-- <td class="align-middle priority pe-4" style="color: var(--base-black, #141414) !important;font-size: 14px !important;">
+                  {{category}}
+              </td> -->
+                <td *ngIf="category.statusID == 1" class="align-middle agent">
+                  <small class="badge-active badge-txt false"><i class="fas fa-circle"
+                      style="width: 8px; height: 8px; padding-bottom: 3px;padding-right: 3px;color: #12B76A"></i>{{category.statusID
+                    == 1 ? "Active":"Inactive"}}</small>
+                </td>
+                <td *ngIf="category.statusID == 2" class="align-middle agent">
+                  <small class="badge rounded badge-subtle-success false"
+                    style="background-color: #FEF3F2;color: #B42318;font-weight: 500;font-size: 13px;"><i
+                      class="fas fa-circle"
+                      style="width: 8px; height: 8px; padding-bottom: 2px;padding-right: 3px;"></i>{{category.statusID
+                    == 2 ? "Inactive":"Active"}}</small>
+                </td>
+                <td class="align-middle white-space-nowrap text-end">
+                  <!-- <a (click)="Edit(category.categoryID)"><i class="fas fa-fw fa-edit"></i> </a>
+
+                  <a (click)="Delete(category)"><i class="fas fa-fw fa-trash-alt"></i> </a> -->
+                  <div class="dropdown font-sans-serif position-static">
+                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><img src="../../../assets/img/nav-icons/vertical-dots.png" height="20px" width="20px"></button>
+                    <div class="dropdown-menu dropdown-menu-end border py-0">
+                      <div class="py-2"><a class="dropdown-item" (click)="Edit(category.categoryID)">Edit</a><a class="dropdown-item text-danger" (click)="Delete(category)">Delete</a></div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <div class="text-center d-none" id="tickets-table-fallback">
+            <p class="fw-bold fs-1 mt-3">No ticket found</p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!anyRowChecked" class="card-footer px-4 pb-12 pb-3">
+        <div class="row align-items-center">
+          <div class="pagination d-none">
+            <li class="active"><button class="page" type="button" data-i="1" data-page="6">1</button></li>
+            <li><button class="page" type="button" data-i="2" data-page="6">2</button></li>
+            <li><button class="page" type="button" data-i="3" data-page="6">3</button></li>
+          </div>
+          <div class="col">
+            <p class="mb-0 fs--1"><span class="d-none d-sm-inline-block me-2 frame-content"
+                data-list-info="data-list-info">Page {{ currentPage }} of {{ totalPages }} </span></p>
+          </div>
+          <div class="col-auto d-flex">
+            <ngb-pagination class="frame-content tap-highlight" [(page)]="currentPage" [pageSize]="itemsPerPage"
+              [collectionSize]="totalItems" (pageChange)="onPageChange($event)">
+              <ng-template ngbPaginationPrevious><span class="pr-1"> <- </span>Previous</ng-template>
+              <ng-template ngbPaginationNext>Next<span class="pl-1"> -> </span></ng-template></ngb-pagination>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="anyRowChecked" class="card-footer  px-4 pb-12 pb-3">
+        <div>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-delete btn-delete-txt me-1" type="button"
+              (click)="deleteSelected()"><span class="fa fa-trash"></span>Delete</button>
+          </div>
+        </div>
+        <!-- <div *ngIf="!showButton" class="d-flex justify-content-center"> -->
+
+          <!-- <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+          <ul class="pagination mb-0"></ul>
+          <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</div>

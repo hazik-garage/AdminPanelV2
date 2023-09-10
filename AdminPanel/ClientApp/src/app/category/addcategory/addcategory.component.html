@@ -1,0 +1,135 @@
+<form [formGroup]="addCategory" (ngSubmit)="onSubmit()">
+<div class="clr-base" style="padding-top: 10px;border-top: outset;">
+  <div class="card-body pl-1">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex">
+        <button class="btn btn-falcon-default btn-sm btn-back" type="button" [routerLink]="['/admin/products/category']"><img src="assets/img/icons/arrow-back.png" width="20" height="20"></button>
+        <h5 class="mb-2 mb-md-0 content-heading pl-3">Add category</h5>
+      </div>
+      <div class="d-flex">
+          <button class="btn btn-primary me-1 mb-1 btn-save" type="submit" name="submit">Save</button>
+        
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <div class="row g-0 clr-base">
+    
+    <div class="col-lg-8 ps-lg-2 pe-lg-2">
+      <div class="card mb-3 border-radius-4">
+        <div class="card-header bg-light p-32 cb-header-border">
+          <br>
+          <h6 class="mb-0 font-heading clr-dark">Category Information</h6>
+        </div>
+        <div class="card-body p-32 pt-0">
+          
+            <div class="row gx-2">
+              <div class="col-sm-6 mb-3">
+                <label class="form-label clr-dark fl-mb-12" for="import-status">English Name </label>
+                <input class="form-control-input" formControlName="name" id="name" type="text" placeholder="English Name" />
+              </div>
+              <!-- <div class="form-text text-danger" *ngIf="f.englishName.errors?.['required'] && (f.englishName.dirty || f.englishName.touched)">Email is required.</div> -->
+              <div class="col-sm-6 mb-3">
+                <label class="form-label clr-dark fl-mb-12" for="import-status">Arabic Name </label>
+                <input class="form-control-input" formControlName="alternateName" id="alternateName" type="text" placeholder="Arabic Name" />
+              </div>
+            </div>
+            <div class="row gx-2">
+              <div class="col-12 mb-4">
+                <label class="form-label clr-dark fl-mb-12" for="product-summary">Description</label>
+                <textarea formControlName="description" placeholder="e.g. I joined Stripe’s Customer Success team to help them scale their checkout product. I focused mainly on onboarding new customers and resolving complaints." class="form-control form-control-sm" id="description" rows="3" > </textarea>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-lg-4 ps-lg-2 pe-lg-2">
+      <div class="sticky-sidebar" style="position: inherit;">
+        <div class="card mb-3 border-radius-4">
+          <div class="card-header bg-light p-32 cb-header-border">
+            <br>
+            <h6 class="mb-0 font-heading clr-dark">Category Status</h6>
+          </div>
+          <div class="card-body p-32 pt-0">
+            <div class="row gx-2">
+              <div class="col-12 ">
+                <label class="form-label fl-mb-12" for="status">Status</label>
+                <select formControlName="statusID" class="form-select select-display" id="statusID" name="statusID">
+                  <option value="1">Active</option>
+                  <option value="2">Inactive</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <!-- <div class="card-header bg-light p-32 cb-header-border">
+            <br>
+            <h6 class="mb-0 font-heading clr-dark">Item photos</h6>
+          </div> -->
+          <div *ngIf="this.f.image.value" class="card mb-3 border-radius-4">
+            <div class="card-header bg-light p-32 cb-header-border">
+                <br>
+                <div class="row justify-content-between gx-0">
+                    <div class="col-auto">
+                        <h1 class="mb-0 font-heading clr-dark">Item photos</h1>
+                    </div>
+                    <div class="col-sm-2">
+                      <a  class="link-del" (click)="deleteImage()">Delete</a>
+                  </div>
+                </div>
+                <!-- <h6 class="mb-0 font-heading clr-dark">Item photos</h6> -->
+                
+            </div>
+          <div class="dropzone dropzone-single p-0 dz-clickable dz-file-processing dz-file-complete b-0 dz-txt px-4 mt-0"
+        data-dropzone="data-dropzone"
+        data-options="{&quot;maxFiles&quot;:1,&quot;acceptedFiles&quot;:&quot;image/*&quot;}">
+          <div  class="row justify-content-md-center pb-4">
+            <div class="col col-md-4 d-flex justify-content-center text-center">
+              
+                <div class="thumbnail align-text-bottom text-center">
+                    <img [src]="this.f.image.value" class="center-block">
+                </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div [hidden]="this.f.image.value">
+          <app-image-upload></app-image-upload>
+          </div>
+          <!-- <div class="dropzone dropzone-single p-0 dz-clickable dz-file-processing dz-file-complete b-0 dz-txt px-4 mt-0"
+            data-dropzone="data-dropzone"
+            data-options="{&quot;maxFiles&quot;:1,&quot;acceptedFiles&quot;:&quot;image/*&quot;}">
+  
+            <div class="dz-message fs--1 px-2" data-dz-message="data-dz-message">
+              <img type="file" class="me-2" src="../../../assets/img/icons/cloud-upload.svg" width="30" height="30" alt=""/>
+              <span class="d-none d-lg-inline">Drag image here </span><span class="dz-upload-txt">upload</span> or <span
+                class="dz-upload-txt">browse image library</span>.<br> SVG, PNG, JPG or GIF (max. 400x400px)
+            </div>
+          </div> -->
+  
+        <div class="card mb-3 border-radius-4">
+          <div class="card-header bg-light p-32 cb-header-border">
+            <br>
+            <h6 class="mb-0 font-heading clr-dark">Category order</h6>
+          </div>
+          <div class="card-body p-32 pt-0">
+            <div class="row gx-2">
+              <div class="col-12">
+                <label class="form-label clr-dark fl-mb-12" for="display-order">Display order</label>
+                <div class="input-group mb-3">
+                  <input formControlName="displayOrder" class="form-control-input" id="displayOrder" type="text" placeholder="Display order" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <form>

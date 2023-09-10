@@ -1,0 +1,750 @@
+<div class="clr-base" style="padding-top: 10px;border-top: outset;">
+    <div class="row g-0 clr-base">
+        <!-- Top Row for Welcome -->
+        <div class="card-body">
+            <div class="col-lg-9">
+                <div class="row flex-between-center">
+                    <div class="col-4">
+                        <h5 class="mb-2 mb-md-0">Welcome back.</h5>
+                    </div>
+                    <div class="col-lg-4 ps-lg-5">
+
+                        <div class="d-flex align-items-center">
+
+                            <!-- <form class="row row-cols-sm-auto">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <input
+                                        class="form-control"
+                                        placeholder="yyyy-mm-dd"
+                                        name="dp"
+                                        [(ngModel)]="model"
+                                        ngbDatepicker
+                                        #d="ngbDatepicker"
+                                    />
+                                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+                                </div>
+                            </div>
+                        </form> -->
+                            <select class="form-select form-select-1" style="width: auto !important;">
+                                <option value="week" selected="selected"><i class="far fa-calendar"></i>
+                                    Today</option>
+                                <option value="month">Last month</option>
+                                <option value="year">Last Year</option>
+                            </select>
+                            <div class="px-1"></div>
+                            <select class="form-select form-select-1" style="width: auto !important;"
+                                data-target=".echart-session-by-browser" (change)="updateLocation($event)">
+                                <option *ngFor="let location of allLocations" [value]="location.locationID"><span
+                                        class="glyphicon glyphicon-calendar"></span>
+                                    {{location.name}}</option>
+                                <!-- <option value="month">Last month</option>
+                            <option value="year">Last Year</option> -->
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 pe-lg-2">
+            <!-- Total Sales / Total Orders -->
+            <div class="row g-0">
+                <div class="col-lg-6 ps-lg-2 mb-12">
+                    <div class="card-bd-l">
+                        <div class="card-header d-flex flex-between-center card-head-bd py-2 card-h-bg">
+                            <h6 class="mb-0">Total sales</h6><a class="btn btn-link btn-sm px-0" href="#!"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none">
+                                    <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg></a>
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-end" style="padding-top: 12px;">
+                            <div class="row justify-content-between">
+                                <div class="col-auto align-self-end">
+                                    <div class="fs-1 fw-normal"
+                                        style="font-size: 32px !important;font-weight: 600 !important; color: #141414 !important;padding-left:12px">
+                                        2,420 SAR</div><span class="badge rounded-pill fs--2 per-up"><span
+                                            class="fas fa-arrow-up me-1"></span>40%</span>
+                                    <span class="per-txt">vs last month </span>
+                                </div>
+                                <div class="col-auto ps-0 mt-n4">
+                                    <app-total-sales></app-total-sales>
+                                    <!-- <div class="echart-default-total-order" data-echarts='{"tooltip":{"trigger":"axis","formatter":"{b0} : {c0}"},"xAxis":{"data":["Week 4","Week 5","Week 6","Week 7"]},"series":[{"type":"line","data":[20,40,100,120],"smooth":true,"lineStyle":{"width":3}}],"grid":{"bottom":"2%","top":"2%","right":"10px","left":"10px"}}'>
+                                        <div
+                                            style="position: relative; width: 138px; height: 90px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                            <canvas  width="172" height="112"
+                                                style="position: absolute; left: 0px; top: 0px; width: 138px; height: 90px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
+                                        </div> -->
+                                    <div class=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-12">
+                    <div class=" card-bd-r">
+                        <div class="card-header d-flex flex-between-center card-head-bd py-2">
+                            <h6 class="mb-0">Total orders</h6><a class="btn btn-link btn-sm px-0" href="#!"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none">
+                                    <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg></a>
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-end" style="padding-top:12px;">
+                            <div class="row justify-content-between">
+                                <div class="col-auto align-self-end">
+                                    <div class="fs-1 fw-normal"
+                                        style="font-size: 32px !important;font-weight: 600 !important; color: #141414 !important; padding-left: 12px;">
+                                        1,210</div><span class="badge rounded-pill fs--2 per-down"><span
+                                            class="fas fa-arrow-up me-1"></span>10%</span>
+                                    <span class="per-txt">vs last month </span>
+                                </div>
+                                <div class="col-auto ps-0 mt-n4">
+                                    <div class="echart-default-total-order">
+                                        <app-total-orders></app-total-orders>
+                                        <div class=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <!-- Analytics -->
+            <div class="row g-0">
+                <div class="col-lg-12 ps-lg-2 mb-4">
+                    <div class="card h-lg-100 card-bd">
+                        <div class="card-header px-3 py-3 card-h-bg">
+                            <div class="row justify-content-between gx-0">
+                                <div class="col-auto px-2 py-2 py-bottom">
+                                    <h1 class="card-heading">Analtics</h1>
+                                    <div class="d-flex">
+                                        <h4 class="card-subheading">Track and analyze your business performance.</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 py-2">
+                                    <select class="form-select form-select-1 dropdown-content" style="width: 100%;"
+                                        id="select-returning-customer-month">
+                                        <option value="0">Compare to</option>
+                                        <option value="1">Feb</option>
+                                        <option value="2">Mar</option>
+                                        <option value="3">Apr</option>
+                                        <option value="4">May</option>
+                                        <option value="5">Jun</option>
+                                        <option value="6">Jul</option>
+                                        <option value="7">Aug</option>
+                                        <option value="8">Sep</option>
+                                        <option value="9">Oct</option>
+                                        <option value="10">Nov</option>
+                                        <option value="11">Dec</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body h-100 pe-0">
+                            <!-- Find the JS file for the following chart at: src\js\charts\echarts\total-sales.js-->
+                            <!-- If you are not using gulp based workflow, you can find the transpiled code at: public\assets\js\theme.js-->
+
+                            <app-graph>
+                            </app-graph>
+
+                        </div>
+                        <div class="tab-content py-4">
+                            <div class="tab-pane preview-tab-pane active" role="tabpanel"
+                                aria-labelledby="tab-dom-4b38bff5-0f04-41be-bd61-558f791e3cb4"
+                                id="dom-4b38bff5-0f04-41be-bd61-558f791e3cb4">
+                                <div class="row g-4 px-4" data-bs-theme="light">
+
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="card bg-light card-bd">
+                                            <div class="card-body">
+                                                <div class="card-subheading ml-5">Net Sales<span
+                                                        class="badge fs--2 badge-danger badge-frame"><span
+                                                            class="fas fa-arrow-down me-1"></span>50%</span></div>
+                                                <p class="card-single-content">135,252.67 SAR</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="card bg-light card-bd">
+                                            <div class="card-body">
+                                                <div class="card-subheading">Discount<span
+                                                        class="badge fs--2 badge-success badge-frame"><span
+                                                            class="fas fa-arrow-up me-1"></span>30%</span></div>
+                                                <p class="card-single-content">522.67 SAR</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="card bg-light card-bd">
+                                            <div class="card-body">
+                                                <div class="card-subheading">Customers<span
+                                                        class="badge fs--2 badge-success badge-frame"><span
+                                                            class="fas fa-arrow-up me-1"></span>90%</span></div>
+                                                <p class="card-single-content">246</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="card bg-light card-bd">
+                                            <div class="card-body">
+                                                <div class="card-subheading">Avg. order value<span
+                                                        class="badge fs--2 badge-success badge-frame"><span
+                                                            class="fas fa-arrow-up me-1"></span>90%</span></div>
+                                                <p class="card-single-content">3,522.67 SAR</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="card bg-light card-bd">
+                                            <div class="card-body">
+                                                <div class="card-subheading">Refund<span
+                                                        class="badge fs--2 badge-danger badge-frame"><span
+                                                            class="fas fa-arrow-down me-1"></span>50%</span></div>
+                                                <p class="card-single-content">13,522.67 SAR</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="card bg-light card-bd">
+                                            <div class="card-body">
+                                                <div class="card-subheading">Inventory Alerts<span
+                                                        class="badge fs--2 badge-success badge-frame"><span
+                                                            class="fas fa-arrow-up me-1"></span>90%</span></div>
+                                                <p class="card-single-content">26</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-lg-12 ps-lg-2 mb-4">
+                    <div class="card h-lg-100 card-bd">
+                        <div class="card-header py-2 card-h-bg">
+                            <div class="row justify-content-between gx-0">
+                                <div class="col-auto px-2 py-2">
+                                    <div class="per-txt">Compared to last week</div>
+                                    <div class="d-flex">
+                                        <div class="card-heading pb-2">Location target</div>
+                                    </div>
+                                    <div class="txt-md">Monitor
+                                        daily targets
+                                        for each location</div>
+                                </div>
+                                <div class="col-auto py-4">
+                                    <a class="btn btn-link btn-sm px-0" href="#!"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-0 align-items-center pb-2">
+                                <div class="col pe-4">
+                                    <div class="progress" style="height:5px;" role="progressbar" aria-valuenow="25"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar rounded-3 bg-primary"
+                                            style="width: 70%; background-color: #00897C !important; "></div>
+                                    </div>
+                                </div>
+                                <div class="col-auto text-end">
+                                    <p class="mb-0 text-900 font-sans-serif"><svg
+                                            class="svg-inline--fa fa-caret-up fa-w-10 me-1 text-success"
+                                            aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-up"
+                                            role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+                                            data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                d="M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z">
+                                            </path>
+                                        </svg><!-- <span class="me-1 fas fa-caret-up text-success"></span> Font Awesome fontawesome.com -->70%
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-lg-12 ps-lg-2 mb-4">
+                    <div class="card h-lg-100 card-bd">
+                        <div class="card-header py-2 card-h-bg">
+                            <div class="row justify-content-between gx-0">
+                                <div class="col-auto px-2 py-2">
+                                    <div class="d-flex">
+                                        <div class="card-heading pb-2">Payment types</div>
+                                    </div>
+                                    <div class="txt-md">View customer payment
+                                        types</div>
+                                </div>
+                                <div class="col-auto py-4">
+                                    <a class="btn btn-link btn-sm px-0" href="#!"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-between px-4 py-4">
+                            <div class="row align-items-center">
+                                <div class="col-lg-8 ps-lg-2 mb-12">
+                                    <div class="d-flex flex-between-center border-bottom pt-md-0 pt-xxl-3 pb-20"
+                                        style="padding-top: 10px !important;">
+                                        <div class="d-flex"><span class="grid-shape pt-2"></span>
+                                            <h6 class="card-content px-3 mb-0">Card</h6>
+                                        </div>
+                                        <h6 class="pe-0 text-end mb-0">100.65 SAR</h6>
+                                    </div>
+                                    <div class="d-flex flex-between-center border-bottom pt-md-0 pt-xxl-3 pb-20">
+                                        <div class="d-flex"><span class="grid-shape pt-2"
+                                                style="background-color: #99C1BA;"></span>
+                                            <h6 class="card-content px-3 mb-0">Credit</h6>
+                                        </div>
+                                        <h6 class="pe-0 text-end mb-0">500.76 SAR</h6>
+                                    </div>
+                                    <div class="d-flex flex-between-center border-bottom pt-md-0 pt-xxl-3 pb-20">
+                                        <div class="d-flex"><span class="grid-shape pt-2"
+                                                style="background-color: #DBEAE1;"></span>
+                                            <h6 class="card-content px-3 mb-0">Cash</h6>
+                                        </div>
+                                        <h6 class="pe-0 text-end mb-0">15300.76 SAR</h6>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ps-lg-2 mb-12">
+                                    <div class="position-relative px-4">
+                                        <!-- Find the JS file for the following chart at: src/js/charts/echarts/most-leads.js-->
+                                        <!-- If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js-->
+                                        <!-- <div class="echart-session-by-browser h-100"
+                                                                data-echart-responsive="true"
+                                                                _echarts_instance_="ec_1690641160042"
+                                                                style="user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); position: relative;">
+                                                                <div
+                                                                    style="position: relative; width: 571px; height: 200px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                                                    <canvas data-zr-dom-id="zr_0" width="713"
+                                                                        height="250"
+                                                                        style="position: absolute; left: 0px; top: 0px; width: 571px; height: 200px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
+                                                                </div>
+                                                                <div class=""
+                                                                    style="position: absolute; display: block; border-style: solid; white-space: nowrap; z-index: 9999999; box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; background-color: rgb(249, 250, 253); border-width: 1px; border-radius: 4px; color: rgb(11, 23, 39); font: 14px / 21px; padding: 7px 10px; top: 0px; left: 0px; transform: translate3d(172px, -4px, 0px); border-color: rgb(216, 226, 239); pointer-events: none; visibility: hidden; opacity: 0;">
+                                                                    <strong>Mozilla:</strong> 30.1%
+                                                                </div>
+                                                            </div> -->
+                                        <!-- <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels"
+                                            [fill]="chartOptions.fill" [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                                            [responsive]="chartOptions.responsive" [legend]="chartOptions.legend"></apx-chart> -->
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-lg-12 ps-lg-2 mb-4">
+                    <div class="card h-lg-100 card-bd">
+                        <div class="card-header py-2 card-h-bg">
+                            <div class="row justify-content-between gx-0">
+                                <div class="col-auto px-2 py-2">
+                                    <div class="d-flex">
+                                        <div class="card-heading pb-2">Popular Products</div>
+                                    </div>
+                                    <div class="txt-md">View the most popular products</div>
+                                </div>
+                                <div class="col-auto py-4">
+                                    <a class="btn btn-link btn-sm px-0" href="#!"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body px-4 pt-2 pb-0">
+                            <div class="row align-items-center">
+                                <div class="col-sm-12">
+                                    <div class="table-responsive scrollbar">
+                                        <table class="table" style="margin-bottom: 0px;">
+
+                                            <tbody>
+                                                <tr class="border-bottom border-200">
+                                                    <td class="px-0 py-3">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                            <img class="rounded-1 border border-200"
+                                                                src="assets/img/nav-icons/Mobil.png" width="32"
+                                                                height="32" alt="">
+                                                            <div class="flex-1 ms-3">
+                                                                <h6 class="mb-0 fw-semi-bold text-nowrap gd-col2">
+                                                                    Mobil 50W-30</h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="align-middle text-end fw-semi-bold gd-col px-0 py-3">
+                                                        1341</td>
+                                                    <td class="align-middle text-end fw-semi-bold gd-col px-0 py-3">
+                                                        6456.24 SAR</td>
+
+                                                </tr>
+                                                <tr class="border-bottom border-200">
+                                                    <td class="px-0 py-3">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                            <img class="rounded-1 border border-200"
+                                                                src="assets/img/nav-icons/Castrol.png" width="32"
+                                                                height="32" alt="">
+                                                            <div class="flex-1 ms-3">
+                                                                <h6 class="mb-0 fw-semi-bold text-nowrap gd-col2">
+                                                                    Castrol GTX</h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="align-middle text-end fw-semi-bold gd-col px-0 py-3">
+                                                        322</td>
+                                                    <td class="align-middle text-end fw-semi-bold gd-col px-0 py-3">
+                                                        4356.24 SAR</td>
+
+                                                </tr>
+                                                <tr class="border-bottom border-200">
+                                                    <td class="px-0 py-3">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                            <img class="rounded-1 border border-200"
+                                                                src="assets/img/nav-icons/Polishwax.png" width="32"
+                                                                height="32" alt="">
+                                                            <div class="flex-1 ms-3">
+                                                                <h6 class="mb-0 fw-semi-bold text-nowrap gd-col2">
+                                                                    Polishing Wax</h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-end fw-semi-bold gd-col px-0 py-3">
+                                                        23</td>
+                                                    <td class="align-middle text-end fw-semi-bold gd-col px-0 py-3">
+                                                        656.24 SAR</td>
+                                                </tr>
+                                                <tr class="border-bottom border-200">
+                                                    <td class="px-0 py-3">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                            <img class="rounded-1 border border-200"
+                                                                src="assets/img/nav-icons/WheelCap.png" width="32"
+                                                                height="32" alt="">
+                                                            <div class="flex-1 ms-3">
+                                                                <h6 class="mb-0 fw-semi-bold text-nowrap gd-col2">
+                                                                    Wheel caps</h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-end fw-semi-bold gd-col px-0 py-3">
+                                                        21</td>
+                                                    <td class="align-middle text-end fw-semi-bold gd-col px-0 py-3">
+                                                        356.24 SAR</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-lg-12 ps-lg-2 mb-4">
+                    <div class="card h-lg-100 card-bd">
+                        <div class="card-header py-2 card-h-bg">
+                            <div class="row justify-content-between gx-0">
+                                <div class="col-auto px-2 py-2">
+                                    <div class="d-flex">
+                                        <div class="card-heading pb-2">Integrations</div>
+                                    </div>
+                                    <div class="txt-md">Connect with other tools and services</div>
+                                </div>
+                                <div class="col-auto py-4">
+                                    <a class="btn btn-link btn-sm px-0" href="#!"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body px-4 py-4">
+                            <div class="row align-items-center">
+                                <div class="col-sm-12">
+                                    <div class="border border-300 rounded-2 p-3  mb-0 row g-0 align-items-center"
+                                        style="border-radius: 12px !important;">
+                                        <div class="col-8 position-static">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex align-items-center position-relative">
+                                                    <img class="rounded-1" src="assets/img/nav-icons/StcPay.png"
+                                                        width="60" alt="">
+                                                    <div class="flex-1 ms-3">
+                                                        <h6 class="mb-0 fw-semi-bold text-nowrap gd-col2">
+                                                            Stc Pay</h6>
+                                                        <p class="mb-0"
+                                                            style="font-size: 13px; font-weight: 500 !important; color: #757575;">
+                                                            Payments</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row flex-end-center g-0">
+                                                <div class="col-auto pe-3">
+                                                    <a href="" class="link-txt">Learn more</a>
+                                                </div>
+                                                <div class="col-5 pe-x1 ps-2">
+                                                    <button class="btn-install btn-install-txt"><svg
+                                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                            viewBox="0 0 20 20" fill="none">
+                                                            <path
+                                                                d="M17.5 12.5V13.5C17.5 14.9001 17.5 15.6002 17.2275 16.135C16.9878 16.6054 16.6054 16.9878 16.135 17.2275C15.6002 17.5 14.9001 17.5 13.5 17.5H6.5C5.09987 17.5 4.3998 17.5 3.86502 17.2275C3.39462 16.9878 3.01217 16.6054 2.77248 16.135C2.5 15.6002 2.5 14.9001 2.5 13.5V12.5M14.1667 8.33333L10 12.5M10 12.5L5.83333 8.33333M10 12.5V2.5"
+                                                                stroke="#333333" stroke-width="1.66667"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>Install
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="p-14"></div>
+                                    <div class="border border-300 rounded-2 p-3  mb-0 row g-0 align-items-center"
+                                        style="border-radius: 12px !important;">
+                                        <div class="col-8 position-static">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex align-items-center position-relative">
+                                                    <img class="rounded-1" src="assets/img/nav-icons/Zoho.png"
+                                                        width="60" alt="">
+                                                    <div class="flex-1 ms-3">
+                                                        <h6 class="mb-0 fw-semi-bold text-nowrap gd-col2">
+                                                            Zoho Inc.</h6>
+                                                        <p class="mb-0"
+                                                            style="font-size: 13px; font-weight: 500 !important; color: #757575;">
+                                                            Accounting</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row flex-end-center g-0">
+                                                <div class="col-auto pe-3">
+                                                    <a href="" class="link-txt">Learn more</a>
+                                                </div>
+                                                <div class="col-5 pe-x1 ps-2">
+                                                    <button class="btn-uninstall btn-uninstall-txt"
+                                                        style="color: #B42318 !important;">Uninstall
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="p-14"></div>
+                                    <div class="border border-300 rounded-2 p-3  mb-0 row g-0 align-items-center"
+                                        style="border-radius: 12px !important;">
+                                        <div class="col-8 position-static">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex align-items-center position-relative">
+                                                    <img class="rounded-1" src="assets/img/nav-icons/Xero.png"
+                                                        width="60" alt="">
+                                                    <div class="flex-1 ms-3">
+                                                        <h6 class="mb-0 fw-semi-bold text-nowrap gd-col2">
+                                                            Accounting</h6>
+                                                        <p class="mb-0"
+                                                            style="font-size: 13px; font-weight: 500 !important; color: #757575;">
+                                                            Accounting</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row flex-end-center g-0">
+                                                <div class="col-auto pe-3">
+                                                    <a href="" class="link-txt">Learn more</a>
+                                                </div>
+                                                <div class="col-5 pe-x1 ps-2">
+                                                    <button class="btn-install btn-install-txt"><svg
+                                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                            viewBox="0 0 20 20" fill="none">
+                                                            <path
+                                                                d="M17.5 12.5V13.5C17.5 14.9001 17.5 15.6002 17.2275 16.135C16.9878 16.6054 16.6054 16.9878 16.135 17.2275C15.6002 17.5 14.9001 17.5 13.5 17.5H6.5C5.09987 17.5 4.3998 17.5 3.86502 17.2275C3.39462 16.9878 3.01217 16.6054 2.77248 16.135C2.5 15.6002 2.5 14.9001 2.5 13.5V12.5M14.1667 8.33333L10 12.5M10 12.5L5.83333 8.33333M10 12.5V2.5"
+                                                                stroke="#333333" stroke-width="1.66667"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>Install
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 ps-lg-2" style="padding-right: 18px;">
+            <div class="card-bd">
+                <div class="card-body px-4 py-3">
+                    <div class="d-flex justify-content-between  todo-list-item pb-2">
+                        <div class="mb-0 d-flex align-items-center">
+                            <label class="form-check-label mb-0 p-3 clr-dark"
+                                style="font-size: 18px;font-weight: 700; padding-left: 0px !important;"
+                                for="checkbox-todo-0">Last 30 days</label>
+                        </div>
+                        <div class="card-header bg-light card-h-bg"
+                            style="padding: 0px !important; border-style: none;">
+                            <a class="btn btn-link btn-sm px-0" href="#!"
+                                style="padding-right: 0px;padding-top: 15px;"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg></a>
+                        </div>
+                    </div>
+                    <hr class="hr hr-blurry" style="margin: 0rem 0" />
+                    <div class="d-flex justify-content-between  todo-list-item" style="height: 60px;">
+                        <div class="mb-0 d-flex align-items-center">
+                            <label class="form-check-label mb-0 p-3 clr-dark"
+                                style="font-size: 16px;font-weight: 700;  padding-left: 0px !important;"
+                                for="checkbox-todo-0">Analytics</label>
+                        </div>
+                    </div>
+                    <hr class="hr hr-blurry" style="margin: 0rem 0" />
+                    <table class="table table-borderless fs--1 mb-0">
+                        <tbody>
+                            <tr class="border-bottom">
+                                <th class="ps-0 row-grid">Avg. order value
+                                </th>
+                                <th class="pe-0 text-end row-grid-end">120.000 SAR<a class="pl-0" href="#"><span><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none">
+                                                <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span></a></th>
+                            </tr>
+                            <tr class="border-bottom">
+                                <th class="ps-0 row-grid">Refund
+                                </th>
+                                <th class="pe-0 text-end row-grid-end">493.000 SAR<a class="pl-0" href="#"><span><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none">
+                                                <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span></a></th>
+                            </tr>
+                            <tr class="border-bottom">
+                                <th class="ps-0 row-grid">Inventory Alert
+                                </th>
+                                <th class="pe-0 text-end row-grid-end">249<a class="pl-1" href="#"><span><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none">
+                                                <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span></a></th>
+                            </tr>
+                            <tr class="border-bottom">
+                                <th class="ps-0 row-grid">Total customers
+                                </th>
+                                <th class="pe-0 text-end row-grid-end">493<a class="pl-1" href="#"><span><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none">
+                                                <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span></a></th>
+                            </tr>
+                            <tr class="border-bottom">
+                                <th class="ps-0 row-grid">New customers
+                                </th>
+                                <th class="pe-0 text-end row-grid-end">49<a class="pl-1" href="#"><span><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none">
+                                                <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span></a></th>
+                            </tr>
+                            <tr class="border-bottom">
+                                <th class="ps-0 row-grid">Returning customers
+                                </th>
+                                <th class="pe-0 text-end row-grid-end">93<a class="pl-1" href="#"><span><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none">
+                                                <path d="M7.5 15L12.5 10L7.5 5" stroke="#AFAFAF" stroke-width="1.66667"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span></a></th>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+                    <div class="card-header d-flex flex-between-center pl-0" style="background-color: transparent;">
+                        <h6 class="form-check-label mb-0 p-3 clr-dark"
+                            style="font-size: 16px;font-weight: 700;  padding-left: 0px !important;">Top products</h6><a
+                            class="py-1 fs--1 font-sans-serif link" href="#!">View All</a>
+                    </div>
+
+
+                    <table class="table table-borderless fs--1 mb-0">
+                        <tbody>
+                            <tr class="border-bottom">
+                                <th class="ps-0" style="padding: 18px 0px; width: 48px;">
+                                    <div class="d-flex align-items-center"><img src="assets/img/nav-icons/Mobil.png"
+                                            alt="" width="40" height="40">
+                                    </div>
+                                </th>
+                                <th class="ps-0" style="padding: 18px 0px;">Oil Shell
+                                    <div class="txt-small fs--2">234 ordered</div>
+                                </th>
+                                <th class="pe-0 text-end align-middle" style="padding: 18px 0px;">493.000 SAR</th>
+                            </tr>
+                            <tr class="border-bottom">
+                                <th class="ps-0" style="padding: 18px 0px; width: 48px;">
+                                    <div class="d-flex align-items-center"><img src="assets/img/nav-icons/Mobil.png"
+                                            alt="" width="40" height="40">
+                                    </div>
+                                </th>
+                                <th class="ps-0" style="padding: 18px 0px;">Oil Shell
+                                    <div class="txt-small fs--2">234 ordered</div>
+                                </th>
+                                <th class="pe-0 text-end align-middle" style="padding: 18px 0px;">493.000 SAR</th>
+                            </tr>
+                            <tr class="border-bottom">
+                                <th class="ps-0" style="padding: 18px 0px; width: 48px;">
+                                    <div class="d-flex align-items-center"><img src="assets/img/nav-icons/Mobil.png"
+                                            alt="" width="40" height="40">
+                                    </div>
+                                </th>
+                                <th class="ps-0" style="padding: 18px 0px;">Oil Shell
+                                    <div class="txt-small fs--2">234 ordered</div>
+                                </th>
+                                <th class="pe-0 text-end align-middle" style="padding: 18px 0px;">493.000 SAR</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
